@@ -7,8 +7,9 @@ import csv
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-print len(sys.argv)
-print str(sys.argv)
+if len(sys.argv) < 3:
+    print "Please input arguments for input and output file"
+    exit()
 
 with open(sys.argv[1], 'r') as f:
     data = json.load(f)
