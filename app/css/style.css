@@ -1,5 +1,9 @@
 .block {
 	background: #aaa;
+	display: inline-block;
+	padding: 4px;
+	size: 14px;
+	font: sans-serif;
 }
 .block:hover {
 	background: #ddd;
@@ -10,4 +14,7 @@
 }
 .layerOn:hover {
 	background: #3C3;
+}
+.hide {
+	display: none;
 }
