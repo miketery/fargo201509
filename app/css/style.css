@@ -1,0 +1,13 @@
+.block {
+	background: #aaa;
+}
+.block:hover {
+	background: #ddd;
+	cursor: pointer;
+}
+.layerOn {
+	background: #090;
+}
+.layerOn:hover {
+	background: #3C3;
+}

@@ -1,10 +1,10 @@
-<!DOCTYP html>
 <html>
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <title>DataMinder</title>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
     <script src="js/leaflet.ajax.min.js"></script>
     <script src="https://code.jquery.com/jquery-git2.min.js"></script>
@@ -13,7 +13,11 @@
 <body>
     <div id="map" style="width: 100%; height: 100%;"></div>
 
-    <!--geo json parse-->
+    <div id="control" style="background: #ccc; position:absolute; width:200px; height:400px;top:0;right:0";><h3>Command Center</h3>
+	<div id="list"></div> 	
+    </div>
+<script src="js/script.js"></script>
+    <!--geo json parse-
     <script>
         var map = L.map('map').setView([46.8772, -96.7894], 13);
             
@@ -22,7 +26,6 @@
             maxZoom: 18,
         }).addTo(map);
 
-                console.log("text");
         $.ajax({
 //            url:"../fargoparcels/one.geojson", 
             //url:"../cassprecinct/cassprecinct.geojson",
@@ -31,9 +34,20 @@
             }).done(function(file) {
                 data = $.parseJSON(file);
                 L.geoJson(data.features).addTo(map);
-                console.log(data);
-                console.log("success");
+                console.log("OK: Loaded Fargo Census Blocks");
+		console.log(data.features[0]);
+		
             });
-    </script>
+
+        $.ajax({
+	    //url:"data/parcelData/380170101071.geojson",
+	    url:"data/parcelData/380170103061.geojson",
+            }).done(function(file) {
+                data = $.parseJSON(file);
+                L.geoJson(data.features).addTo(map);
+                console.log("OK: Success loaded parcel block");
+            });
+	
+    </script-->
 </body>
 </html>
