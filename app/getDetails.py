@@ -28,15 +28,23 @@ with open('arcGISids.json','r') as file:
 	parcelIds=json.load(file)
 
 fields="ACRES,SOURCE,GISPIN,ParcelNo,Owner1,Owner2,BldgSF,LandValue,BldgValue,TotalValue,AptUnits,Type,UseCode,LandUseDesignation,SegSqFt,BlockLegal,A4SF"
-with open('20151108arcGIoutput.json','w') as f:
-	print(len(parcelIds))
-	for i in range(40):
-		s=i*150
-		e=s+150
-		data = getDetails(",".join(str(v) for v in parcelIds[s:e]),fields) #171 is limit
-		json.dump(data["features"],f)
 
-pprint.pprint(data.keys())
-pprint.pprint(data["features"][0]["attributes"])
+print(len(parcelIds))
+output=[]
+pprint.pprint(parcelIds)
+exit()
+for i in range(236):
+    print i
+    s=i*150
+    e=s+150
+    if e>len(parcelIds):
+        e=len(parcelIds)
+    data = getDetails(",".join(str(v) for v in parcelIds[s:e]),fields) #171 is limit
+    output+=data["features"]
+with open('20151108arcGIoutput.json','w') as f:
+    json.dump(output,f)
+
+#pprint.pprint(data.keys())
+#pprint.pprint(data["features"][0]["attributes"])
 
 
